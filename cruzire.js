@@ -22,6 +22,7 @@ var Crustulum = {
                 fragment.appendChild(Crustulum.Menu.toggleButton('infiniteCookies','Infinite Cookies','Causes your cookies to constantly regenerate.'));
                 fragment.appendChild(Crustulum.Menu.toggleButton('infiniteMagic','Infinite Magic','Causes your Grimoire magic to recharge almost instantly'));
                 fragment.appendChild(Crustulum.Menu.toggleButton('infiniteSwaps','Infinite Swaps','Causes your Pantheon swaps to regenerate almost instantly.'));
+                fragment.appendChild(Crustulum.Menu.actionButton('infLumps','unlimited sugar lumps','gives you infinity sugar lumps.', Crustulum.Actions.infLumps));
                 fragment.appendChild(Crustulum.Menu.subheading('Mini-game Enhancers'));
                 fragment.appendChild(Crustulum.Menu.toggleButton('miracleSpells','Miracle Spell™','Grimoire spells will never fail.'));
                 fragment.appendChild(Crustulum.Menu.toggleButton('immortalPlants','Make Plants Immortal','Makes it so plants never wither. Does not affect weeds or fungi.'));
@@ -100,6 +101,9 @@ var Crustulum = {
         },
         giveCookies: ()=>{
             Game.cookies = Game.cookiesEarned;
+        },
+        infLumps: ()=>{
+            Game.lumps=Infinity
         },
         unlockAllSeeds: ()=>{
             if(Game.Objects['Farm'].minigameLoaded && Game.Objects['Farm'].minigame.plants) {

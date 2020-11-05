@@ -50,7 +50,8 @@ var Crustulum = {
                 fragment.appendChild(Crustulum.Menu.subheading('This is a copy of Crustulum just a bit different'));
                 fragment.appendChild(Crustulum.Menu.subheading('Misc'));
                 fragment.appendChild(Crustulum.Menu.actionButton('removeCheatedCookies','Remove Cheat Achievement','Remove \'Cheated cookies taste awful\' achievement', Crustulum.Actions.removeCheatedCookies));
-                
+                fragment.appendChild(Crustulum.Menu.actionButton('getDevConsole','get dev console','gives you the dev console', Crustulum.Actions.removeCheatedCookies));
+                console.log('view updates and github page at https://github.com/declan234e/Cruzire')
 
                 // Unload Crustulum button. Doesn't work if you loaded other add-ons first. We check only for Cookie Monster.
                 if (typeof CM === 'undefined' || Crustulum.cookieMonsterLoaded) fragment.appendChild(Crustulum.Menu.actionButton('unloadCrustulum','Unload Cruzire','Unloads Cruzire and disabled all of it\'s features.', Crustulum.Actions.unloadCrustulum));
@@ -104,6 +105,11 @@ var Crustulum = {
         },
         infLumps: ()=>{
             Game.lumps=Infinity
+        },
+        getDevConsole: ()=>{
+            Game.OpenSesame()
+            Game.bakeryName="CRUZIRE"
+            Game.bakeryNameRefresh()
         },
         unlockAllSeeds: ()=>{
             if(Game.Objects['Farm'].minigameLoaded && Game.Objects['Farm'].minigame.plants) {
@@ -475,5 +481,3 @@ if (typeof CrustulumPlugins === 'object') {
 
 // Alternatively, you can set CrustulumInit to false to prevent the Init and set up your plugins after loading the script, remember to call `Crustulum.Init()` afterwards.
 if (typeof CrustulumInit === 'undefined' || CrustulumInit) Crustulum.Init();
-
-/* cSpell:ignore Crustulum, Toggleables, prefs, minigame, Mult, grimoire, grimoire's, grimoire\'s, Cyclius, dragonflight, Achiev, jscolor */

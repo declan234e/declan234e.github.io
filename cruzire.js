@@ -50,8 +50,8 @@ var Crustulum = {
                 fragment.appendChild(Crustulum.Menu.subheading('This is a copy of Crustulum just a bit different'));
                 fragment.appendChild(Crustulum.Menu.subheading('Misc'));
                 fragment.appendChild(Crustulum.Menu.actionButton('removeCheatedCookies','Remove Cheat Achievement','Remove \'Cheated cookies taste awful\' achievement', Crustulum.Actions.removeCheatedCookies));
-                fragment.appendChild(Crustulum.Menu.actionButton('getDevConsole','get dev console','gives you the dev console', Crustulum.Actions.removeCheatedCookies));
-                console.log('view updates and github page at https://github.com/declan234e/Cruzire')
+                fragment.appendChild(Crustulum.Menu.actionButton('getDevConsole','get dev console','gives you the dev console', Crustulum.Actions.getDevConsole));
+                
 
                 // Unload Crustulum button. Doesn't work if you loaded other add-ons first. We check only for Cookie Monster.
                 if (typeof CM === 'undefined' || Crustulum.cookieMonsterLoaded) fragment.appendChild(Crustulum.Menu.actionButton('unloadCrustulum','Unload Cruzire','Unloads Cruzire and disabled all of it\'s features.', Crustulum.Actions.unloadCrustulum));
@@ -181,6 +181,7 @@ var Crustulum = {
         Game.Win('Third-party');
         if (typeof CM === 'object' && typeof Queue !== 'undefined' && typeof jscolor !== 'undefined') Crustulum.cookieMonsterLoaded = true;
         Crustulum.PluginHooks.Init();
+        console.log('view updates and github page at https://github.com/declan234e/Cruzire')
     },
     cookieMonsterLoaded: false,
     Menu: {

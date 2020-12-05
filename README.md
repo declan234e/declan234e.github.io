@@ -10,10 +10,10 @@ make this a bookmark and load it in the game `javascript: (function () { Game.Lo
 
 # textures
 
-ingot https://declan234e.github.io/textures/beep_ingot.png
-pickaxe https://declan234e.github.io/textures/beep_pickaxe.png
-remnant https://declan234e.github.io/textures/beep_remnant.png
-stick https://declan234e.github.io/textures/beep_stick.png
-sword https://declan234e.github.io/textures/beep_sword.png
-terraria sword https://declan234e.github.io/textures/newthing.png
+ingot https://declan234e.github.io/textures/beep_ingot.png \n
+pickaxe https://declan234e.github.io/textures/beep_pickaxe.png \n
+remnant https://declan234e.github.io/textures/beep_remnant.png \n
+stick https://declan234e.github.io/textures/beep_stick.png \n
+sword https://declan234e.github.io/textures/beep_sword.png \n 
+terraria sword https://declan234e.github.io/textures/newthing.png \n
 

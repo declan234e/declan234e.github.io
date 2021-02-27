@@ -10,10 +10,11 @@ make this a bookmark and load it in the game `javascript: (function () { Game.Lo
 
 # textures
 
-ingot https://declan234e.github.io/textures/beep_ingot.png <br>
-pickaxe https://declan234e.github.io/textures/beep_pickaxe.png <br>
-remnant https://declan234e.github.io/textures/beep_remnant.png <br>
-stick https://declan234e.github.io/textures/beep_stick.png <br>
-sword https://declan234e.github.io/textures/beep_sword.png <br> 
-terraria sword https://declan234e.github.io/textures/newthing.png <br>
+local textures = false
+
+if textures == false them
+   print('error')
+   else
+   print('still nothing')
+end
 

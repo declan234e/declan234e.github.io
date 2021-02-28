@@ -12,9 +12,9 @@ make this a bookmark and load it in the game `javascript: (function () { Game.Lo
 
 local textures = false
 
-if textures == false them
-   print('error')
-   else
-   print('still nothing')
+if textures == false then <br>
+   print('error')<br>
+   else<br>
+   print('still nothing')<br>
 end
 

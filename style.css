@@ -20,7 +20,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   background: var(--bg);
@@ -172,6 +172,8 @@ section { padding: 5rem 2rem; max-width: 1080px; margin: 0 auto; }
 
 /* ---------- Cards (projects) ---------- */
 .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+/* never let a card's content force the grid track wider than its share */
+.cards > * { min-width: 0; }
 
 .card {
   position: relative;
@@ -188,7 +190,7 @@ section { padding: 5rem 2rem; max-width: 1080px; margin: 0 auto; }
   border-color: var(--accent, var(--green));
   box-shadow: 0 10px 34px -10px color-mix(in srgb, var(--accent, var(--green)) 45%, transparent);
 }
-.card-head { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; }
+.card-head { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; flex-wrap: wrap; row-gap: 0.5rem; }
 .card-title { font-family: "Press Start 2P", monospace; font-size: 0.8rem; line-height: 1.7; }
 .badge {
   font-size: 0.65rem; letter-spacing: 1px; padding: 0.25em 0.7em;
@@ -313,6 +315,7 @@ section[id] { scroll-margin-top: 72px; }
   section { padding: 3.6rem 1.2rem; }
   .cards { grid-template-columns: 1fr; }
   .nav-links { gap: 1rem; }
+  .section-title { font-size: 0.85rem; }
   .repo-row { grid-template-columns: 1fr; gap: 0.15rem; }
   .term-body, .term-footer { padding-left: 1rem; padding-right: 1rem; }
 }

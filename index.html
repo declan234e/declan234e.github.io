@@ -1,1 +1,137 @@
-<p>placeholder</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>declan234e.dev</title>
+  <meta name="description" content="declan b — i mod minecraft & break red dead redemption 2." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="crt">
+  <div class="vibe-ticker" role="note" aria-label="another vibe-coded website">
+    <div class="vibe-ticker-track" aria-hidden="true"><span>⚡ another vibe-coded website ⚠️</span><span>⚡ another vibe-coded website ⚠️</span><span>⚡ another vibe-coded website ⚠️</span><span>⚡ another vibe-coded website ⚠️</span><span>⚡ another vibe-coded website ⚠️</span><span>⚡ another vibe-coded website ⚠️</span><span>⚡ another vibe-coded website ⚠️</span><span>⚡ another vibe-coded website ⚠️</span></div>
+  </div>
+
+  <div class="orb orb-green" aria-hidden="true"></div>
+  <div class="orb orb-red" aria-hidden="true"></div>
+
+  <nav>
+    <a class="nav-brand" href="#top">declan234e.dev</a>
+    <div class="nav-links">
+      <a href="#projects">projects</a>
+      <a href="#github">github</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+      <div class="grid-floor" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="boot" id="boot"></div>
+        <h1 class="hero-name" id="hero-name">DECLAN B<span class="cursor" aria-hidden="true"></span></h1>
+        <p class="hero-tag">
+          I mod <span class="hl-mc">Minecraft</span> &amp; break
+          <span class="hl-rdr2">Red Dead Redemption 2</span>. mostly for fun,
+          occasionally until sunrise.
+        </p>
+      </div>
+      <a class="scroll-cue" href="#projects">▾ scroll to load out</a>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects">
+      <h2 class="section-title reveal"><span class="prompt">$</span> cat ./loadout</h2>
+      <div class="cards">
+        <a class="card card-rdr2 reveal" href="https://github.com/declan234e/HorseMenu" target="_blank" rel="noopener">
+          <div class="card-head">
+            <span class="card-title">TERMINUS</span>
+            <span class="badges"><span class="badge lang">C++</span></span>
+          </div>
+          <p class="card-desc">my fork of the Terminus (HorseMenu) mod menu for Red Dead Redemption 2 &amp; Red Dead Online, adding controller support and quite a few other things.</p>
+          <span class="card-link">view on github →</span>
+        </a>
+
+        <a class="card card-mc reveal" href="https://github.com/declan234e/oblivion" target="_blank" rel="noopener">
+          <div class="card-head">
+            <span class="card-title">OBLIVION</span>
+            <span class="badges"><span class="badge lang">JAVA · FORGE</span></span>
+          </div>
+          <p class="card-desc">my first minecraft mod built around mekanism (1.20.1) — was basically a learning project for java and minecraft modding, contains some not very functional machines and a guidebook. no longer in development.</p>
+          <span class="card-link">view on github →</span>
+        </a>
+
+        <a class="card card-cookie reveal" href="https://github.com/declan234e/Cruzire" target="_blank" rel="noopener">
+          <div class="card-head">
+            <span class="card-title">CRUZIRE</span>
+            <span class="badges"><span class="badge lang">JS</span><span class="badge archived">ARCHIVED</span></span>
+          </div>
+          <p class="card-desc">my first time "forking" and editing code also using github (as you can tell from me not forking the code) — a cookie clicker addon with auto-clickers, toggles and quality-of-life actions. retired in 2020, but the source is still there. CREDITS to Crustulum</p>
+          <span class="card-link">view on github →</span>
+        </a>
+
+        <div class="card card-bat reveal" aria-label="Bat Bot, private archive project">
+          <div class="card-head">
+            <span class="card-title">BAT BOT</span>
+            <span class="badges"><span class="badge lang">BATCH</span><span class="badge">PRIVATE ARCHIVE</span></span>
+          </div>
+          <p class="card-desc">the first project i ever made — a command line game written in pure batch. private archive: it contains uncredited code from others.</p>
+          <span class="card-link">source: private archive</span>
+        </div>
+
+        <div class="card card-dark card-locked reveal" aria-label="classified minecraft mod, details partially redacted">
+          <div class="card-head">
+            <span class="card-title"><span class="lock-icon" aria-hidden="true">🔒</span>PROJECT&nbsp;<span class="redacted"></span><span class="redacted"></span><span class="redacted"></span></span>
+            <span class="badges"><span class="badge lang">JAVA · NEOFORGE</span><span class="badge">CLASSIFIED</span></span>
+          </div>
+          <p class="card-desc">a much bigger minecraft mod is in development. platform declassified: neoforge — everything else pending.</p>
+          <span class="card-link">status: ██████% complete</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GITHUB ============ -->
+    <section id="github">
+      <h2 class="section-title reveal"><span class="prompt">$</span> github --list-repos</h2>
+      <div class="terminal reveal">
+        <div class="term-bar" aria-hidden="true">
+          <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+          <span class="term-title">bash — declan234e</span>
+        </div>
+        <div class="term-body">
+          <p class="term-cmd"><span class="prompt">$</span> gh repo list declan234e</p>
+          <a class="repo-row" href="https://github.com/declan234e/HorseMenu" target="_blank" rel="noopener">
+            <span class="repo-name">Terminus (HorseMenu)</span><span class="repo-lang">C++</span><span class="repo-desc">rdr2 &amp; rdo mod menu — my fork</span>
+          </a>
+          <a class="repo-row" href="https://github.com/declan234e/oblivion" target="_blank" rel="noopener">
+            <span class="repo-name">oblivion</span><span class="repo-lang">Java</span><span class="repo-desc">minecraft tech mod (mekanism-based)</span>
+          </a>
+          <a class="repo-row" href="https://github.com/declan234e/Cruzire" target="_blank" rel="noopener">
+            <span class="repo-name">Cruzire</span><span class="repo-lang">JS</span><span class="repo-desc">cookie clicker addon — <span class="archived-mark">[archived]</span></span>
+          </a>
+          <a class="repo-row" href="https://github.com/declan234e/declan234e.github.io" target="_blank" rel="noopener">
+            <span class="repo-name">declan234e.github.io</span><span class="repo-lang">HTML</span><span class="repo-desc">you are here</span>
+          </a>
+          <div class="repo-row repo-row-static">
+            <span class="repo-name">Bat Bot</span><span class="repo-lang">Batch</span><span class="repo-desc">the first project i ever made, a command line game — <span class="private-mark">[private archive]</span></span>
+          </div>
+        </div>
+        <div class="term-footer">
+          <a class="btn" href="https://github.com/declan234e" target="_blank" rel="noopener">view full profile →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Declan B · Generated by Qwen3.8 27b</p>
+    <p>built with a terminal, some caffeine <span class="heart">♥</span> and far too many compile errors <- yep 100% definitely</p>
+  </footer>
+
+  <div class="toast" id="konami-toast" role="status">ACCESS GRANTED — cheat code detected. nice one.</div>
+  <script src="script.js"></script>
+</body>
+</html>

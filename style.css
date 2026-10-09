@@ -1,0 +1,326 @@
+/* ============================================================
+   declan234e.dev — "The Modder's Terminal"
+   Dark terminal aesthetic · no build step · no dependencies
+   ============================================================ */
+
+:root {
+  --bg: #0a0c10;
+  --panel: #10141b;
+  --panel-2: #0d1117;
+  --line: #1e2633;
+  --text: #c9d4e3;
+  --muted: #7d8aa0;
+  --green: #3ddc84;
+  --red: #e5484d;
+  --gold: #e8b34b;
+  --purple: #a78bfa;
+  --cyan: #2dd4bf;
+  --glow-green: rgba(61, 220, 132, 0.35);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--green); color: #04130b; }
+
+a { color: inherit; }
+
+/* ---------- CRT overlays (scanlines + vignette) ---------- */
+.crt::before {
+  content: "";
+  position: fixed; inset: 0;
+  z-index: 60; pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.028) 0px,
+    rgba(255, 255, 255, 0.028) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+.crt::after {
+  content: "";
+  position: fixed; inset: 0;
+  z-index: 61; pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+/* ---------- Ambient glow orbs ---------- */
+.orb {
+  position: fixed; z-index: -2; border-radius: 50%;
+  filter: blur(110px); opacity: 0.16; pointer-events: none;
+}
+.orb-green { width: 480px; height: 480px; background: var(--green); top: -140px; left: -120px; }
+.orb-red   { width: 420px; height: 420px; background: var(--red);   bottom: -160px; right: -100px; }
+
+/* ---------- Vibe ticker (top banner) ---------- */
+.vibe-ticker {
+  overflow: hidden; white-space: nowrap;
+  background: #0c1512;
+  border-bottom: 1px solid rgba(61, 220, 132, 0.35);
+  color: var(--green);
+  font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
+  padding: 0.5rem 0;
+}
+.vibe-ticker-track { display: inline-flex; animation: ticker-scroll 24s linear infinite; }
+.vibe-ticker span { padding-right: 3.5rem; }
+@keyframes ticker-scroll { to { transform: translateX(-50%); } }
+
+/* ---------- Nav ---------- */
+nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.9rem 2rem;
+  background: rgba(10, 12, 16, 0.82);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-brand {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.7rem; letter-spacing: 1px;
+  color: var(--green); text-decoration: none;
+  text-shadow: 0 0 12px var(--glow-green);
+}
+.nav-links { display: flex; gap: 1.6rem; }
+.nav-links a {
+  color: var(--muted); text-decoration: none; font-size: 0.85rem;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+.nav-links a:hover { color: var(--green); text-shadow: 0 0 10px var(--glow-green); }
+
+/* ---------- Layout ---------- */
+main { position: relative; z-index: 1; }
+section { padding: 5rem 2rem; max-width: 1080px; margin: 0 auto; }
+.section-title {
+  font-family: "Press Start 2P", monospace;
+  font-size: 1rem; line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 2.4rem;
+}
+.section-title .prompt { color: var(--green); }
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: calc(100vh - 92px);
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; overflow: hidden;
+}
+
+/* perspective grid floor */
+.grid-floor {
+  position: absolute; left: 50%; bottom: -2px;
+  width: 260vw; height: 42vh;
+  transform: translateX(-50%) perspective(520px) rotateX(63deg);
+  background-image:
+    linear-gradient(to right, rgba(61, 220, 132, 0.14) 1px, transparent 1px),
+    linear-gradient(to top, rgba(61, 220, 132, 0.14) 1px, transparent 1px);
+  background-size: 70px 70px;
+  animation: grid-move 3.2s linear infinite;
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 85%);
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 85%);
+  pointer-events: none;
+}
+@keyframes grid-move { from { background-position-y: 0; } to { background-position-y: 70px; } }
+
+.hero-inner { position: relative; z-index: 2; }
+
+.boot { min-height: 6.4em; font-size: 0.95rem; margin-bottom: 1.8rem; white-space: pre-wrap; }
+.boot-line { display: block; color: var(--muted); }
+.boot-line .cmd-prompt { color: var(--green); }
+.boot-line.output { color: var(--text); }
+
+.hero-name {
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(1.6rem, 5vw, 3rem);
+  letter-spacing: 2px;
+  color: #eafff3;
+  text-shadow: 0 0 18px var(--glow-green), 0 0 46px rgba(61, 220, 132, 0.25);
+  margin-bottom: 1.4rem;
+}
+.hero-tag {
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  color: var(--muted);
+  max-width: 38ch;
+}
+.hero-tag .hl-mc   { color: var(--green); }
+.hero-tag .hl-rdr2 { color: var(--red); }
+
+.cursor {
+  display: inline-block; width: 0.6em; height: 1.1em;
+  background: var(--green); vertical-align: text-bottom; margin-left: 3px;
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.scroll-cue {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  color: var(--muted); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px;
+  animation: bob 2s ease-in-out infinite;
+}
+.scroll-cue:hover { color: var(--green); }
+@keyframes bob { 50% { transform: translate(-50%, 7px); } }
+
+/* ---------- Cards (projects) ---------- */
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+
+.card {
+  position: relative;
+  background: linear-gradient(180deg, var(--panel), var(--panel-2));
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent, var(--green));
+  padding: 1.6rem 1.5rem 1.4rem;
+  text-decoration: none; color: inherit;
+  display: flex; flex-direction: column; gap: 0.9rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent, var(--green));
+  box-shadow: 0 10px 34px -10px color-mix(in srgb, var(--accent, var(--green)) 45%, transparent);
+}
+.card-head { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; }
+.card-title { font-family: "Press Start 2P", monospace; font-size: 0.8rem; line-height: 1.7; }
+.badge {
+  font-size: 0.65rem; letter-spacing: 1px; padding: 0.25em 0.7em;
+  border: 1px solid var(--line); border-radius: 3px; color: var(--muted);
+  white-space: nowrap;
+}
+.badge.lang { color: var(--accent, var(--green)); border-color: color-mix(in srgb, var(--accent, var(--green)) 50%, transparent); }
+.badge.archived { text-decoration: line-through; opacity: 0.7; }
+.card-desc { font-size: 0.88rem; color: var(--muted); flex-grow: 1; }
+.card-link { font-size: 0.8rem; color: var(--accent, var(--green)); opacity: 0.85; }
+.card:hover .card-link { opacity: 1; }
+
+/* per-project accents */
+.card-rdr2   { --accent: var(--red); }
+.card-mc     { --accent: var(--green); }
+.card-cookie { --accent: var(--gold); }
+.card-dark   { --accent: var(--purple); }
+.card-bat    { --accent: var(--cyan); }
+
+/* classified / redacted card */
+.card-locked { cursor: default; }
+.card-locked:hover { transform: none; box-shadow: none; border-color: var(--line); }
+.redacted {
+  display: inline-block; min-width: 0.9em; height: 1em; margin-right: 0.28em;
+  background: #232a36; vertical-align: baseline;
+}
+.card-locked:hover .redacted { animation: glitch 0.5s steps(2) infinite; }
+@keyframes glitch {
+  0%   { transform: translateX(0);     opacity: 1;    }
+  25%  { transform: translateX(-2px);  opacity: 0.55; background: #3a2438; }
+  50%  { transform: translateX(2px);   opacity: 0.9;  }
+  75%  { transform: translateX(-1px);  opacity: 0.65; background: #2c3345; }
+  100% { transform: translateX(0);     opacity: 1;    }
+}
+.lock-icon { font-size: 1.2rem; }
+
+/* ---------- GitHub terminal panel ---------- */
+.terminal {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.term-bar {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.7rem 1rem;
+  background: #0b0e14;
+  border-bottom: 1px solid var(--line);
+}
+.term-dot { width: 11px; height: 11px; border-radius: 50%; }
+.term-dot.r { background: #ff5f57; } .term-dot.y { background: #febc2e; } .term-dot.g { background: #28c840; }
+.term-title { margin-left: auto; font-size: 0.72rem; color: var(--muted); }
+
+.term-body { padding: 1.3rem 1.5rem; }
+.term-cmd { color: var(--text); font-size: 0.9rem; margin-bottom: 1.1rem; }
+.term-cmd .prompt { color: var(--green); }
+
+.repo-row {
+  display: grid;
+  grid-template-columns: minmax(180px, 2fr) 70px minmax(0, 3fr);
+  gap: 1rem; align-items: baseline;
+  padding: 0.55rem 0.6rem; margin: 0 -0.6rem;
+  border-radius: 4px; text-decoration: none; color: var(--text); font-size: 0.88rem;
+  transition: background 0.15s;
+}
+.repo-row:hover { background: rgba(61, 220, 132, 0.07); }
+.repo-name { color: var(--green); overflow-wrap: anywhere; }
+.repo-lang { color: var(--muted); font-size: 0.78rem; }
+.repo-desc { color: var(--muted); font-size: 0.82rem; overflow-wrap: anywhere; }
+.repo-row .archived-mark { color: var(--gold); opacity: 0.85; }
+/* repo rows that list a project but have no link to click */
+.repo-row-static { cursor: default; }
+.repo-row-static:hover { background: transparent; }
+.private-mark { color: var(--cyan); opacity: 0.85; }
+
+.term-footer { padding: 1.1rem 1.5rem 1.4rem; border-top: 1px solid var(--line); }
+.btn {
+  display: inline-block;
+  font-size: 0.82rem; letter-spacing: 1px;
+  color: var(--green); text-decoration: none;
+  border: 1px solid var(--green); border-radius: 4px;
+  padding: 0.6em 1.3em;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.btn:hover {
+  background: rgba(61, 220, 132, 0.12);
+  box-shadow: 0 0 18px -4px var(--glow-green);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 2rem; text-align: center;
+  color: var(--muted); font-size: 0.8rem; line-height: 2;
+}
+footer .heart { color: var(--red); }
+
+/* ---------- Scroll reveal ---------- */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ---------- Konami toast ---------- */
+.toast {
+  position: fixed; bottom: 1.6rem; left: 50%; z-index: 70;
+  transform: translate(-50%, 20px);
+  background: #0d1a12; border: 1px solid var(--green); border-radius: 6px;
+  color: var(--green); font-size: 0.82rem; padding: 0.8em 1.4em;
+  box-shadow: 0 0 28px -6px var(--glow-green);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* grouped badges (archived + language, etc.) */
+.badges { display: flex; gap: 0.4rem; }
+
+/* keep section headings below the sticky nav when anchor-scrolling */
+section[id] { scroll-margin-top: 72px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px) {
+  section { padding: 3.6rem 1.2rem; }
+  .cards { grid-template-columns: 1fr; }
+  .nav-links { gap: 1rem; }
+  .repo-row { grid-template-columns: 1fr; gap: 0.15rem; }
+  .term-body, .term-footer { padding-left: 1rem; padding-right: 1rem; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .grid-floor, .cursor, .scroll-cue, .card-locked:hover .redacted, .vibe-ticker-track { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+}
